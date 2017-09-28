@@ -285,6 +285,7 @@ DEPENDENCIES
   bootstrap4-kaminari-views
   byebug
   capistrano
+  capistrano-bundler
   capistrano-passenger
   capistrano-rails
   capistrano-rbenv
