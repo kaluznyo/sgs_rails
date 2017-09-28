@@ -14,7 +14,7 @@
     <% Game.column_names.map(&:to_sym).reject {|attr| [:id, :description, :data_quality, :state_released_unreleased_canceled, :created_at, :updated_at].include? attr}.each do |attribute| %>
       <% if @game[attribute].present? %>
         <p>
-          <% if @game[attribute].match?(/^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix) %>
+          <% if @game[attribute].to_s.match?(/^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix) %>
             <%= link_to attribute.to_s.humanize.capitalize, @game[attribute], target: '_blank' %>
           <% else %>
             <%= attribute.to_s.humanize.capitalize %>: <%= @game[attribute] %>
