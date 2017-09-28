@@ -15,7 +15,7 @@
       </div>
       <div class="col-md-4">
         <%= f.label :development_studio_cont, 'Studio name' %>
-        <%= f.text_field :development_studio_cont, class: 'form-control'%>
+        <%= f.text_field :development_studio_cont, class: 'form-control' %>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
       </div>
       <div class="col-md-4">
         <%= f.label :studio_location_cont, 'Studio location' %>
-        <%= f.text_field :studio_location_cont, class: 'form-control'%>
+        <%= f.text_field :studio_location_cont, class: 'form-control' %>
       </div>
     </div>
 
@@ -50,7 +50,11 @@
 <% @games.each do |game| %>
   <div class="row game">
     <div class="col-xs-12 col-md-6 col-md-offset-1 text-md-center">
-      <%= link_to image_tag(game.screenshot_direct_link, size: '360x200', skip_pipeline: true), game_path(game) %>
+      <% if game.screenshot_direct_link.blank? %>
+        <img src="holder.js/360x200?text=No Image">
+      <% else %>
+        <%= link_to image_tag(game.screenshot_direct_link, size: '360x200', skip_pipeline: true), game_path(game) %>
+      <% end %>
     </div>
     <div class="detail col-xs-12 col-md-6 col-md-offset-2">
       <h2>

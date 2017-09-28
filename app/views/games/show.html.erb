@@ -2,7 +2,11 @@
 
 <div class="row game">
   <div class="col-xs-12 col-md-6 col-md-offset-1">
-    <%= image_tag @game.screenshot_direct_link, class: 'img-fluid' %>
+    <% if @game.screenshot_direct_link.blank? %>
+      <img src="holder.js/600x400?text=No Image" class="img-fluid">
+    <% else %>
+      <%= image_tag @game.screenshot_direct_link, class: 'img-fluid' %>
+    <% end %>
   </div>
   <div class="detail col-xs-12 col-md-5 col-md-offset-2">
     <p><%= @game.description %></p>
@@ -14,7 +18,7 @@
             <%= link_to attribute.to_s.humanize.capitalize, @game[attribute], target: '_blank' %>
           <% else %>
             <%= attribute.to_s.humanize.capitalize %>: <%= @game[attribute] %>
-        <% end %>
+          <% end %>
         </p>
       <% end %>
     <% end %>
