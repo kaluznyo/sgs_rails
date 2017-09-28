@@ -9,7 +9,8 @@ class Game < ApplicationRecord
     ws.rows.each_with_index do |row, index|
       if index > 0 and row.first.present?
         data = header.zip(row).to_h
-        game = Game.find_or_create_by(identifier: data[:identifier])
+        data.merge!(release_date: Date.new(data[:release_date].to_i, 1, 1)) if data[:release_date] and data[:release_date].match?(/^\d{4}$/)
+        game = find_or_create_by(identifier: data[:identifier])
         game.update(data)
       end
     end
