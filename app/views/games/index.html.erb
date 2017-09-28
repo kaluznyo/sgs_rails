@@ -1,0 +1,76 @@
+<h1>Swiss Games Showcase</h1>
+
+
+<div class="search pb-4">
+  <%= search_form_for @q do |f| %>
+
+    <div class="form-group row">
+      <div class="col-md-4">
+        <%= f.label :title_cont, 'Title' %>
+        <%= f.text_field :title_cont, class: 'form-control' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :platforms_cont, 'Platform' %>
+        <%= f.text_field :platforms_cont, class: 'form-control' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :development_studio_cont, 'Studio name' %>
+        <%= f.text_field :development_studio_cont, class: 'form-control'%>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-4">
+        <%= f.label :release_date_gteq, 'Date greater than' %>
+        <%= f.text_field :release_date_gteq, class: 'form-control datepicker' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :release_date_lteq, 'Date less than' %>
+        <%= f.text_field :release_date_lteq, class: 'form-control datepicker' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :studio_location_cont, 'Studio location' %>
+        <%= f.text_field :studio_location_cont, class: 'form-control'%>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-4">
+        <%= f.label :languages_cont, 'Languages' %>
+        <%= f.text_field :languages_cont, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="action float-right">
+      <%= f.submit 'Search', class: 'btn btn-primary' %> <%= @games.total_count %> results
+    </div>
+  <% end %>
+</div>
+
+<% @games.each do |game| %>
+  <div class="row game">
+    <div class="col-xs-12 col-md-6 col-md-offset-1 text-md-center">
+      <%= link_to image_tag(game.screenshot_direct_link, size: '360x200', skip_pipeline: true), game_path(game) %>
+    </div>
+    <div class="detail col-xs-12 col-md-6 col-md-offset-2">
+      <h2>
+        <%= link_to game.title, game_path(game) %>
+      </h2>
+      <p><%= game.development_studio %></p>
+      <p><%= game.release_date %></p>
+      <p><%= game.platforms %></p>
+      <p>
+        <%= link_to 'Download', game.store, target: '_blank' %>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<div class="row justify-content-md-center mt-2">
+  <%= paginate @games, theme: 'twitter-bootstrap-4' %>
+</div>
+
+
+<script>
+    $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
+</script>

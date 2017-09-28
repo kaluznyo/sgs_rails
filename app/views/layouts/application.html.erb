@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Swiss Games Showcase</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+</body>
+
+<footer class="text-md-center">
+  An OpenGLAM Hackathon
+  <a href="http://make.opendata.ch/wiki/project:swissvideogamesdirectory">project</a>.<br>
+  Website by Olivier Kaluzny
+</footer>
+
+</html>

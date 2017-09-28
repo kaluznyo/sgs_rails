@@ -42,3 +42,6 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+/config/SwissGameShowcase-6bc8d2f2b6e6.json
+.DS_Store
+/config/deploy/production.rb

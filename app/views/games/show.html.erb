@@ -1,0 +1,24 @@
+<h1><%= @game.title %></h1>
+
+<div class="row game">
+  <div class="col-xs-12 col-md-6 col-md-offset-1">
+    <%= image_tag @game.screenshot_direct_link, class: 'img-fluid' %>
+  </div>
+  <div class="detail col-xs-12 col-md-5 col-md-offset-2">
+    <p><%= @game.description %></p>
+
+    <% Game.column_names.map(&:to_sym).reject {|attr| [:id, :description, :data_quality, :state_released_unreleased_canceled, :created_at, :updated_at].include? attr}.each do |attribute| %>
+      <% if @game[attribute].present? %>
+        <p>
+          <% if @game[attribute].match?(/^(http|https):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/ix) %>
+            <%= link_to attribute.to_s.humanize.capitalize, @game[attribute], target: '_blank' %>
+          <% else %>
+            <%= attribute.to_s.humanize.capitalize %>: <%= @game[attribute] %>
+        <% end %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<br>
+<%= link_to '< Back to all Swiss games', games_path %>
