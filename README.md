@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a webapp to search and navigate into Swiss Games Showcase
+Original work https://github.com/Zarkonnen/SwissGamesShowcase.
 
-Things you may want to cover:
+# Installation
 
-* Ruby version
+We use ruby 2.4.2 and Rails 5.1.4. And sqlite
 
-* System dependencies
+It's only a cron, that sync with google spreadsheet, and basic CRUD for search.
 
-* Configuration
+To sync and create database, you must copy spreadsheet into your google drive (https://docs.google.com/spreadsheets/d/1pWOGpADxvNEWcYnpTFpCyhS9rtIjCYgIdZmBppDkC2Q/edit?usp=sharing)
+Then follow this step https://docs.google.com/spreadsheets/d/1pWOGpADxvNEWcYnpTFpCyhS9rtIjCYgIdZmBppDkC2Q/edit?usp=sharing
+Put the JSON file into /config and change name of file into environement.rb and key of spreadsheet doc (in url of your spreadsheet)
 
-* Database creation
+And run in console Game.sync_with_spreadsheet
 
-* Database initialization
+That's all
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Demo : http://138.68.91.93/
