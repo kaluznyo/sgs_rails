@@ -65,4 +65,3 @@ gem 'whenever', require: false
 gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano-passenger'
-gem 'capistrano-rbenv'
